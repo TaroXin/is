@@ -1,13 +1,15 @@
 {
   "name": "@taroxin/is",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Type of value",
   "main": "index.js",
   "packageManager": "pnpm@7.1.0",
   "scripts": {
     "build": "rimraf dist && pnpm gen && tsc",
     "gen": "esno scripts/gen-code.ts",
-    "test": "pnpm gen && vitest run"
+    "test": "pnpm gen && vitest run",
+    "release": "bumpp package.json --commit --push --no-tag && pnpm run publish",
+    "publish": "pnpm -r publish --access public"
   },
   "keywords": [
     "type",
@@ -24,6 +26,7 @@
   "license": "MIT",
   "devDependencies": {
     "@taroxin/eslint-config": "^0.2.7",
+    "bumpp": "^8.2.1",
     "eslint": "^8.31.0",
     "esno": "^0.16.3",
     "rimraf": "^3.0.2",
