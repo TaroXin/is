@@ -1,7 +1,9 @@
+/* eslint-disable new-parens */
 /* eslint-disable no-new-object */
 /* eslint-disable no-new-wrappers */
 import { expect, test } from 'vitest'
-import * as is from '../src/index'
+import * as isAll from '../src/index'
+import is, { CheckTypes } from '../src/index'
 
 const unitCases = {
   Function: new Map<any, boolean>([
@@ -94,13 +96,19 @@ const unitCases = {
 }
 
 test('is', () => {
+  expect(is(new Function)).toBe(CheckTypes.Function)
+  expect(is(new WeakMap)).toBe(CheckTypes.WeakMap)
+  expect(is(new Map)).toBe(CheckTypes.Map)
+})
+
+test('type check', () => {
   for (const key in unitCases) {
     const unitMap = unitCases[key]
 
     for (const [valueKey, valueExpect] of unitMap) {
       console.log('key', key, 'valueKey', valueKey)
-      console.log(`is${key}`, is[`is${key}`](valueKey))
-      expect(is[`is${key}`](valueKey)).toBe(valueExpect)
+      console.log(`is${key}`, isAll[`is${key}`](valueKey))
+      expect(isAll[`is${key}`](valueKey)).toBe(valueExpect)
     }
   }
 })
