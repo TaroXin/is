@@ -2,7 +2,7 @@
   "name": "@taroxin/is",
   "version": "0.2.2",
   "description": "Type of value",
-  "main": "index.js",
+  "main": "dist/index.js",
   "packageManager": "pnpm@7.1.0",
   "scripts": {
     "build": "rimraf dist && pnpm gen && tsc",
@@ -26,6 +26,7 @@
   "license": "MIT",
   "devDependencies": {
     "@taroxin/eslint-config": "^0.2.7",
+    "@types/node": "^18.11.18",
     "bumpp": "^8.2.1",
     "eslint": "^8.31.0",
     "esno": "^0.16.3",

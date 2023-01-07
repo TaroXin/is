@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@taroxin/eslint-config': ^0.2.7
+  '@types/node': ^18.11.18
   bumpp: ^8.2.1
   eslint: ^8.31.0
   esno: ^0.16.3
@@ -11,6 +12,7 @@ specifiers:
 
 devDependencies:
   '@taroxin/eslint-config': 0.2.7_iukboom6ndih5an6iafl45j2fe
+  '@types/node': 18.11.18
   bumpp: 8.2.1
   eslint: 8.31.0
   esno: 0.16.3

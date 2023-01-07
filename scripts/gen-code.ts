@@ -1,11 +1,32 @@
 import path from 'path'
 import fs from 'fs'
 
-const checkTypes = ['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp', 'Error', 'Symbol', 'Map', 'WeakMap', 'Set', 'WeakSet', 'Array', 'Object', 'Boolean', 'Null', 'Undefined']
+const checkTypes = [
+  'Arguments',
+  'Function',
+  'String',
+  'Number',
+  'Date',
+  'RegExp',
+  'Error',
+  'Symbol',
+  'Map',
+  'WeakMap',
+  'Set',
+  'WeakSet',
+  'Array',
+  'Object',
+  'Boolean',
+  'Null',
+  'Undefined',
+]
 
 const generateTemplate = (name: string): string => {
-  return `export function is${name}(value: any): boolean {
-  return Object.prototype.toString.call(value) === '[object ${name}]'
+  return `// Automatically generate code
+import getTag from './getTag'
+
+export function is${name}(value: any): boolean {
+  return getTag(value) === '[object ${name}]'
 }
 `
 }
@@ -19,15 +40,28 @@ const generateCheckTypes = (): string => {
   return str
 }
 
-function generateFile() {
+function generateExportFile() {
   const content: string[] = []
   checkTypes.forEach((name) => {
-    content.push(generateTemplate(name))
+    content.push(`export * from './is${name}'`)
   })
-  return `${generateCheckTypes()}\n${content.join('\n')}`
+  return `${generateCheckTypes()}\n${content.join('\n')}\n`
 }
 
-let fileContent = generateFile()
+function generateIndependentFile() {
+  const sourcePath = path.resolve(__dirname, '../src')
+  checkTypes.forEach((name) => {
+    const template = generateTemplate(name)
+    const filePath = path.join(sourcePath, `is${name}.ts`)
+    if (fs.existsSync(filePath))
+      fs.unlinkSync(filePath)
+
+    fs.writeFileSync(filePath, template)
+  })
+}
+
+generateIndependentFile()
+let fileContent = generateExportFile()
 const filePath = path.resolve(__dirname, '../src/index.ts')
 
 const existFileContent: string[] = []
