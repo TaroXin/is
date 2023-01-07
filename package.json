@@ -1,6 +1,6 @@
 {
   "name": "@taroxin/is",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Type of value",
   "main": "dist/index.js",
   "packageManager": "pnpm@7.1.0",
