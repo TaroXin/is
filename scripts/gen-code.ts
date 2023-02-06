@@ -25,6 +25,11 @@ const generateTemplate = (name: string): string => {
   return `// Automatically generate code
 import getTag from './getTag'
 
+/**
+ * Check value is ${name}
+ * @param {any} value
+ * @returns {boolean}
+ */
 export function is${name}(value: any): boolean {
   return getTag(value) === '[object ${name}]'
 }
