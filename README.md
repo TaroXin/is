@@ -17,6 +17,7 @@ isObject(null) // false
 isObject({}) // true
 ```
 
+<!-- GenDocs -->
 ## Functions
 
 <dl>
@@ -37,6 +38,9 @@ isObject({}) // true
 </dd>
 <dt><a href="#isFunction">isFunction(value)</a> ⇒ <code>boolean</code></dt>
 <dd><p>Check value is Function</p>
+</dd>
+<dt><a href="#isIdCard">isIdCard(value)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Check value is Id Card [检查值为中国身份证]</p>
 </dd>
 <dt><a href="#isMap">isMap(value)</a> ⇒ <code>boolean</code></dt>
 <dd><p>Check value is Map</p>
@@ -132,6 +136,17 @@ Check value is Error
 
 ## isFunction(value) ⇒ <code>boolean</code>
 Check value is Function
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| value | <code>any</code> | 
+
+<a name="isIdCard"></a>
+
+## isIdCard(value) ⇒ <code>boolean</code>
+Check value is Id Card [检查值为中国身份证]
 
 **Kind**: global function  
 
@@ -259,3 +274,4 @@ Check value is WeakSet
 | Param | Type |
 | --- | --- |
 | value | <code>any</code> | 
+

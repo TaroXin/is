@@ -11,6 +11,7 @@
   "scripts": {
     "build": "rimraf dist && pnpm gen && tsc",
     "gen": "esno scripts/gen-code.ts",
+    "docs": "pnpm run build && esno scripts/gen-docs.ts",
     "test": "pnpm gen && vitest run",
     "release": "bumpp package.json --commit --push --no-tag && pnpm run publish",
     "publish": "pnpm -r publish --access public"

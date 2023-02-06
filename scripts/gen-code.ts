@@ -47,8 +47,12 @@ const generateCheckTypes = (): string => {
 
 function generateExportFile() {
   const content: string[] = []
-  checkTypes.forEach((name) => {
-    content.push(`export * from './is${name}'`)
+  const fileList = fs.readdirSync(path.resolve(__dirname, '../src'), { encoding: 'utf-8' })
+  fileList.forEach((fileName) => {
+    if (fileName.startsWith('is')) {
+      const name = path.basename(fileName, path.extname(fileName))
+      content.push(`export * from './${name}'`)
+    }
   })
   return `${generateCheckTypes()}\n${content.join('\n')}\n`
 }
